@@ -1,4 +1,6 @@
 from app.auth import bp
+from flask import render_template
+from app.auth.forms import RegistrationForm
 
 
 @bp.route('/login')
@@ -11,6 +13,10 @@ def logout():
     return "Logout Page"
 
 
-@bp.route('/register')
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
-    return "Registration Page"
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        return "Great All Clear"
+    return render_template(
+        'auth/register.html', form=form, title="Register")
