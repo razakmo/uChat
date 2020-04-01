@@ -12,7 +12,7 @@ class RegistrationForm(FlaskForm):
     password = PasswordField(
         'password_label', validators=[InputRequired(
             message="Password required"), Length(
-            min=8, max=25, message="Password must be at least 8 chars")])
+            min=4, max=25, message="Password must be at least 8 chars")])
     confirm_password = PasswordField(
         'confirm_password_label', validators=[InputRequired(
             message="Useraname required"), EqualTo(
